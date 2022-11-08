@@ -1,0 +1,111 @@
+{
+  "revision_id": "8140526928ca1336a6d2691e1e3edf010bf15e53bd890a68e0679d8803307322",
+  "name": "travalio",
+  "run_list": [
+    "recipe[travalio::default]"
+  ],
+  "included_policy_locks": [
+
+  ],
+  "cookbook_locks": {
+    "apt": {
+      "version": "7.4.2",
+      "identifier": "eb6d17bcea84f3f6fae7128626b6d24e9b8b7dba",
+      "dotted_decimal_identifier": "66266568248165619.69518714625992374.231235058892218",
+      "cache_key": "apt-7.4.2-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/apt/versions/7.4.2/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/apt/versions/7.4.2/download",
+        "version": "7.4.2"
+      }
+    },
+    "base": {
+      "version": "0.5.0",
+      "identifier": "5cb9b5d720f2d90748d0d998707a9828d26df139",
+      "dotted_decimal_identifier": "26099888506860249.2050386678018170.167301096534329",
+      "cache_key": "base-0.5.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/base/versions/0.5.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/base/versions/0.5.0/download",
+        "version": "0.5.0"
+      }
+    },
+    "chef_client_updater": {
+      "version": "3.12.3",
+      "identifier": "4a3c5a1d4bbfca5306005f9475534c39c886c35d",
+      "dotted_decimal_identifier": "20895506012815306.23369021740315987.83811061121885",
+      "cache_key": "chef_client_updater-3.12.3-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef_client_updater/versions/3.12.3/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef_client_updater/versions/3.12.3/download",
+        "version": "3.12.3"
+      }
+    },
+    "travalio": {
+      "version": "0.1.0",
+      "identifier": "3e1250bc6ae2901cebad3299d01041f6d66576e3",
+      "dotted_decimal_identifier": "17471586523865744.8140428458709008.72528414734051",
+      "source": ".",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": null,
+        "revision": "9ed9bb841d0fb3fbe56660edd69a66463bbe2850",
+        "working_tree_clean": false,
+        "published": false,
+        "synchronized_remote_branches": [
+
+        ]
+      },
+      "source_options": {
+        "path": "."
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "apt",
+        "= 7.4.2"
+      ],
+      [
+        "base",
+        "= 0.5.0"
+      ],
+      [
+        "chef_client_updater",
+        "= 3.12.3"
+      ],
+      [
+        "travalio",
+        ">= 0.0.0"
+      ]
+    ],
+    "dependencies": {
+      "apt (7.4.2)": [
+
+      ],
+      "base (0.5.0)": [
+        [
+          "apt",
+          ">= 0.0.0"
+        ]
+      ],
+      "chef_client_updater (3.12.3)": [
+
+      ],
+      "travalio (0.1.0)": [
+        [
+          "base",
+          ">= 0.0.0"
+        ]
+      ]
+    }
+  }
+}
