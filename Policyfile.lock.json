@@ -1,5 +1,5 @@
 {
-  "revision_id": "01dbcf2667b983f2592c12fb701755a98e2b5b28382e2812428c77b6a1a215cc",
+  "revision_id": "1f09efc99be830b92ddbee9a0fe441900d3f43fbdd3c5665d5a9143a8930f9d4",
   "name": "travalio",
   "run_list": [
     "recipe[travalio::default]"
@@ -9,14 +9,14 @@
   ],
   "cookbook_locks": {
     "base": {
-      "version": "0.5.8",
-      "identifier": "a55b60bc93c4332970218d6ecc2fe884d356c047",
-      "dotted_decimal_identifier": "46543842196046899.11663763454217263.255657179004999",
-      "cache_key": "base-7aa69d2aa73619952cd20f202f326579a8e5973a",
+      "version": "0.5.9",
+      "identifier": "05c8a1267df5ea1234543b3903af026cd4a92223",
+      "dotted_decimal_identifier": "1627969344632298.5124085956281263.2666447577635",
+      "cache_key": "base-0096cf1fbfa5968b281e67851d24dc9530433e65",
       "origin": "https://github.com/josephholsten/role-base.git",
       "source_options": {
         "git": "https://github.com/josephholsten/role-base.git",
-        "revision": "7aa69d2aa73619952cd20f202f326579a8e5973a"
+        "revision": "0096cf1fbfa5968b281e67851d24dc9530433e65"
       }
     },
     "chef_client_updater": {
@@ -98,14 +98,14 @@
     },
     "travalio": {
       "version": "0.1.0",
-      "identifier": "af2c349f85fecaec8a3023bdb1b30b9cdba598af",
-      "dotted_decimal_identifier": "49306725450645194.66580033866412467.12768327866543",
+      "identifier": "1f088c18b6b2861cb019f259c4f4ef0dcbfd6518",
+      "dotted_decimal_identifier": "8735122081100422.8074924834538740.262842535994648",
       "source": ".",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "ssh://git@github.com/josephholsten/rolo-travalio.git",
-        "revision": "56437f3e594eff8384bd7c73fa18967835c71479",
+        "revision": "b13c8489625a85f4af15304b452083d8a0329dd9",
         "working_tree_clean": false,
         "published": false,
         "synchronized_remote_branches": [
@@ -178,7 +178,7 @@
       ]
     ],
     "dependencies": {
-      "base (0.5.8)": [
+      "base (0.5.9)": [
         [
           "chef_client_updater",
           ">= 0.0.0"
