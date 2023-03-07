@@ -1,5 +1,5 @@
 {
-  "revision_id": "1f09efc99be830b92ddbee9a0fe441900d3f43fbdd3c5665d5a9143a8930f9d4",
+  "revision_id": "13ba4d4dee43304f58bb00188dcdea095a297376e0fb346e72184ca9d75caac4",
   "name": "travalio",
   "run_list": [
     "recipe[travalio::default]"
@@ -97,19 +97,20 @@
       }
     },
     "travalio": {
-      "version": "0.1.0",
-      "identifier": "1f088c18b6b2861cb019f259c4f4ef0dcbfd6518",
-      "dotted_decimal_identifier": "8735122081100422.8074924834538740.262842535994648",
+      "version": "0.1.1",
+      "identifier": "e685de5b71eb7ddc35887d932f6cd1ac2d40321d",
+      "dotted_decimal_identifier": "64886434706877309.61983355214966636.230537423761949",
       "source": ".",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "ssh://git@github.com/josephholsten/rolo-travalio.git",
-        "revision": "b13c8489625a85f4af15304b452083d8a0329dd9",
+        "revision": "9e900bc30556f72fd3e512e87fb2f5e6d54bd860",
         "working_tree_clean": false,
-        "published": false,
+        "published": true,
         "synchronized_remote_branches": [
-
+          "origin/HEAD -> origin/main",
+          "origin/main"
         ]
       },
       "source_options": {
@@ -231,7 +232,7 @@
       "rsyslog (9.2.5)": [
 
       ],
-      "travalio (0.1.0)": [
+      "travalio (0.1.1)": [
         [
           "base",
           ">= 0.0.0"
