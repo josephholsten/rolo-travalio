@@ -12,3 +12,6 @@ all: Policyfile.lock.json
 
 push: Policyfile.lock.json
 	./bin/chef-cli push production Policyfile.lock.json
+
+update:
+	./bin/chef-cli update
