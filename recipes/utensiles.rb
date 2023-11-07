@@ -320,7 +320,20 @@
 ## }}
 
 # games {
-    package "fortune-mod"
+    package "fortune" do     # image metadata cli
+      case node[:platform]
+      when 'redhat', 'centos', 'oracle'
+        package_name 'fortune-mod'
+      when 'debian'
+        package_name 'fortune-mod'
+      when 'freebsd'
+        # fortune(6) included in base
+        action :nothing
+      else
+        # Not supported
+      end
+    end
+
   # package "sabaki"   # go board
   # package "steam"    # gaming marketplace
   # package "nethack"  # the game  
