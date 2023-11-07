@@ -246,12 +246,16 @@
 # image creation & management {{
   # package "photosweeper-x"
   # package "mylio"           # photo store
-    package "exiftool" do      # image metadata cli
+    package "exiftool" do     # image metadata cli
       case node[:platform]
       when 'redhat', 'centos', 'oracle'
         package_name 'perl-Image-ExifTool'
+      when 'debian'
+        package_name 'libimage-exiftool-perl'
+      when 'freebsd'
+        package_name 'p5-Image-ExifTool'
       else
-        package_name 'watch'
+        # Not supported
       end
     end
   # package "imagemagick" # image manip
