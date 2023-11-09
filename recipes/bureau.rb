@@ -20,8 +20,8 @@ if node[:platform_family] == 'freebsd'
 # TODO: freebsd/mkdesktop configs
 # f=/etc/fstab
 #   fdescfs /dev/fd fdescfs rw 0 0
-  mount "fdescfs" do
-    device  "/dev/fd"
+  mount "/dev/fd" do
+    device  "fdescfs"
     fstype  "fdescfs"
     options "rw"
     dump    0
