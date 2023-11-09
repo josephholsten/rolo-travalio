@@ -14,6 +14,61 @@
   else
     # Not supported
   end
+
+
+if node[:platform_family] == 'freebsd'
+# TODO: freebsd/mkdesktop configs
+# f=/etc/fstab
+#   fdescfs /dev/fd fdescfs rw 0 0
+  mount "fdescfs" do
+    device  "/dev/fd"
+    fstype  "fdescfs"
+    options "rw"
+    dump    0
+    pass    0
+    action  :enable
+  end
+#   procfs /proc procfs rw 0 0
+#   tmpfs /compat/linux/dev/shm tmpfs rw,mode=1777,size=1g 0 0
+#   linprocfs /compat/linux/proc linprocfs rw 0 0
+#   linsysfs /compat/linux/sys linsysfs rw 0 0
+end
+
+  
+# sysrc "kld_list=\"/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko\""
+# sysrc devfs_system_ruleset=system
+# sysrc dbus_enable=YES
+# sysrc cupsd_enable=YES
+# sysrc linux_enable=YES
+# sysrc sddm_enable=YES
+
+# f=/etc/sysctl.conf
+#   vfs.usermount=1
+#   compat.linux.osrelease=3.10.0
+#   kern.ipc.shm_allow_removed=1
+  
+
+# f=/boot/loader.conf
+#   kern.vty=vt
+
+# f=/etc/devfs.rules
+#   [system=10]
+#   add path 'usb/*' mode 0664 group operator
+#   add path 'cd*' mode 0664 group operator
+#   add path 'da*' mode 0664 group operator
+#   add path 'video*' mode 0664 group operator
+
+
+# f=/etc/devfs.conf
+#   own     /dev/pci        root:operator
+#   perm    /dev/pci        0664
+#   own     /dev/dri/card0  root:operator
+#   perm    /dev/dri/card0  0664
+#   own	/dev/pass0	root:operator
+#   perm	/dev/pass0	0664
+#   own	/dev/xpt0	root:operator
+#   perm	/dev/xpt0	0664
+#   link /compat/linux/dev/shm shm
 # }
 
 # system de fenestrage {
@@ -24,6 +79,7 @@
     # xorg
   when 'freebsd'
     package "xorg"
+    package "dbus"
   when 'macos'
     # quartz included
   else
