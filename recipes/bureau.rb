@@ -73,6 +73,9 @@ end
 # sysrc cupsd_enable=YES
 # sysrc linux_enable=YES
 # sysrc sddm_enable=YES
+sysrc "sddm_enable" do
+  value "YES"
+end
 
 # f=/etc/sysctl.conf
 #   vfs.usermount=1

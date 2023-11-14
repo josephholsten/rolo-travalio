@@ -1,4 +1,4 @@
 name 'travalio'
-version '0.1.11'
+version '0.2.1'
 
 depends 'base'
