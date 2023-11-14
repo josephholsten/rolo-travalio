@@ -36,35 +36,37 @@ if node[:platform_family] == 'freebsd'
     pass    0
     action  :enable
   end
+  # FIXME: missing /compat?
   # tmpfs /compat/linux/dev/shm tmpfs rw,mode=1777,size=1g 0 0
-  mount "/compat/linux/dev/shm" do
-    device  "tmpfs"
-    fstype  "procfs"
-    options "rw,mode=1777,size=1g"
-    dump    0
-    pass    0
-    action  :enable
-  end
-  # linprocfs /compat/linux/proc linprocfs rw 0 0
-  mount "/compat/linux/proc" do
-    device  "linprocfs"
-    fstype  "linprocfs"
-    options "rw"
-    dump    0
-    pass    0
-    action  :enable
-  end
-  # linsysfs /compat/linux/sys linsysfs rw 0 0
-  mount "/compat/linux/sys" do
-    device  "linsysfs"
-    fstype  "linsysfs"
-    options "rw"
-    dump    0
-    pass    0
-    action  :enable
-  end
+  # mount "/compat/linux/dev/shm" do
+  #   device  "tmpfs"
+  #   fstype  "procfs"
+  #   options "rw,mode=1777,size=1g"
+  #   dump    0
+  #   pass    0
+  #   action  :enable
+  # end
+  # # linprocfs /compat/linux/proc linprocfs rw 0 0
+  # mount "/compat/linux/proc" do
+  #   device  "linprocfs"
+  #   fstype  "linprocfs"
+  #   options "rw"
+  #   dump    0
+  #   pass    0
+  #   action  :enable
+  # end
+  # # linsysfs /compat/linux/sys linsysfs rw 0 0
+  # mount "/compat/linux/sys" do
+  #   device  "linsysfs"
+  #   fstype  "linsysfs"
+  #   options "rw"
+  #   dump    0
+  #   pass    0
+  #   action  :enable
+  # end
 end
   
+# FIXME: sysrc resource
 # sysrc "kld_list=\"/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko\""
 # sysrc devfs_system_ruleset=system
 # sysrc dbus_enable=YES

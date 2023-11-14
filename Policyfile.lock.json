@@ -1,5 +1,5 @@
 {
-  "revision_id": "b0b4decca7745de1f17707ded3f73c489ba1faadc69785b803dec9df6e681eff",
+  "revision_id": "6c4235170678c9ae8cf344ca5181222f6c47a7f9f595cb8a32422eff9cba134c",
   "name": "travalio",
   "run_list": [
     "recipe[travalio::default]"
@@ -9,14 +9,14 @@
   ],
   "cookbook_locks": {
     "base": {
-      "version": "0.6.4",
-      "identifier": "3f5dac3dbe393a968307df425a531bdcc124c356",
-      "dotted_decimal_identifier": "17835917884406074.42365316340275795.30634947167062",
-      "cache_key": "base-d94e48c7610fb059d42ee6b15d56c5367cd74188",
+      "version": "0.6.6",
+      "identifier": "ea826261b8864d71139b330a43040341faf50d1d",
+      "dotted_decimal_identifier": "66008503608182349.31828229665473284.3581918121245",
+      "cache_key": "base-487752ca484ec23857c1ad40fcadefc45453a4a7",
       "origin": "https://github.com/josephholsten/role-base.git",
       "source_options": {
         "git": "https://github.com/josephholsten/role-base.git",
-        "revision": "d94e48c7610fb059d42ee6b15d56c5367cd74188"
+        "revision": "487752ca484ec23857c1ad40fcadefc45453a4a7"
       }
     },
     "chef_client_updater": {
@@ -97,15 +97,15 @@
       }
     },
     "travalio": {
-      "version": "0.1.10",
-      "identifier": "51f75e39cfdb56c701904a21454b8c16257457ad",
-      "dotted_decimal_identifier": "23071457182473046.56015239596033355.154026745550765",
+      "version": "0.1.11",
+      "identifier": "81e3171f5cf1081881abf826ad6a3a6b5b449e9e",
+      "dotted_decimal_identifier": "36559960445612296.6897975043730794.64232767135390",
       "source": ".",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "ssh://git@github.com/josephholsten/rolo-travalio.git",
-        "revision": "e1f88072d4bef6e6f445e0d044cbe712a402b4a6",
+        "revision": "d8f24121c90d13b3fcbcd2c40e115e9db2b1976e",
         "working_tree_clean": false,
         "published": false,
         "synchronized_remote_branches": [
@@ -178,7 +178,7 @@
       ]
     ],
     "dependencies": {
-      "base (0.6.4)": [
+      "base (0.6.6)": [
         [
           "chef_client_updater",
           ">= 0.0.0"
@@ -235,7 +235,7 @@
       "rsyslog (9.2.16)": [
 
       ],
-      "travalio (0.1.10)": [
+      "travalio (0.1.11)": [
         [
           "base",
           ">= 0.0.0"
