@@ -3,7 +3,7 @@ unified_mode true
 provides :sysrc
 
 property :name
-property :value, [String], default: 'YES'
+property :value, String, default: 'YES'
 
 # property :jail, String, desired_state: false
 # property :root, String, desired_state: false
@@ -14,7 +14,7 @@ action :add do
   # command += [ '-f', new_resource.file ] if new_resource.file
   # command += [ '-j', new_resource.jail ] if new_resource.jail
   # command += [ '-R', new_resource.root ] if new_resource.root
-  command += "#{new_resource.name}=\"#{value}\""
+  command += [ "#{new_resource.name}=#{new_resource.value}" ]
 
   converge_if_changed :value do
     shell_out!(command)
@@ -26,18 +26,31 @@ action :delete do
   # command += [ '-f', new_resource.file ] if new_resource.file
   # command += [ '-j', new_resource.jail ] if new_resource.jail
   # command += [ '-R', new_resource.root ] if new_resource.root
-  command += "#{new_resource.name}="
+  command += [ '-x', new_resource.name ]
 
-  converge_if_changed :value do
-    shell_out!(command)
+  if current_resource
+    converge_by "delete #{current_resource.identity}" do
+      shell_out!(command)
+    end
   end
 end
 
 load_current_value do |_new_resource|
   command = [ 'sysrc' ]
   command += [ '-n' ] # value
-  command += [ new_resource.name ]
+  command += [ @name ]
 
-  values = shell_out!(command)
-  _new_resource.value = values.split
+  cmd = shell_out(command)
+  if cmd.error?
+    current_value_does_not_exist!
+  else
+    _new_resource.value = cmd.stdout
+  end
 end
+
+## Test cases
+## absent
+## 
+## empty
+## other
+## same

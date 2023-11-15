@@ -72,9 +72,8 @@ end
 # sysrc dbus_enable=YES
 # sysrc cupsd_enable=YES
 # sysrc linux_enable=YES
-# sysrc sddm_enable=YES
-sysrc "sddm_enable" do
-  value "YES"
+sysrc "linux_enable" do
+  action :delete
 end
 
 # f=/etc/sysctl.conf
@@ -130,6 +129,9 @@ end
     # gdm3
   when 'freebsd'
       package "sddm"
+      sysrc "sddm_enable" do
+        value "YES"
+      end
   when 'macos'
     # quartz included
   else
