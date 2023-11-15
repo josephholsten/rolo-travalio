@@ -66,14 +66,18 @@ if node[:platform_family] == 'freebsd'
   # end
 end
   
-# FIXME: sysrc resource
 # sysrc "kld_list=\"/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko\""
-# sysrc devfs_system_ruleset=system
-# sysrc dbus_enable=YES
-# sysrc cupsd_enable=YES
-# sysrc linux_enable=YES
+sysrc "kld_list" do
+  value "nvidia"
+end
+sysrc "devfs_system_ruleset" do
+  value "system"
+end
+sysrc "cupsd_enable" do
+  value "YES"
+end
 sysrc "linux_enable" do
-  action :delete
+  value "YES"
 end
 
 # f=/etc/sysctl.conf
@@ -114,6 +118,9 @@ end
   when 'freebsd'
     package "xorg"
     package "dbus"
+    sysrc "dbus_enable" do
+      value 'YES'
+    end
   when 'macos'
     # quartz included
   else
