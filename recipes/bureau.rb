@@ -9,16 +9,18 @@
     package "nvidia-driver"
     package "nvidia-settings"
     package "nvidia-xconfig"
+    # sysrc "kld_list=\"/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko\""
+    sysrc "kld_list" do
+      value "nvidia"
+    end
   when 'macos'
     # quartz included
   else
     # Not supported
   end
-
+# }
 
 if node[:platform_family] == 'freebsd'
-# TODO: freebsd/mkdesktop configs
-  # fdescfs /dev/fd fdescfs rw 0 0
   mount "/dev/fd" do
     device  "fdescfs"
     fstype  "fdescfs"
@@ -27,7 +29,6 @@ if node[:platform_family] == 'freebsd'
     pass    0
     action  :enable
   end
-  # procfs /proc procfs rw 0 0
   mount "/proc" do
     device  "procfs"
     fstype  "procfs"
@@ -36,77 +37,33 @@ if node[:platform_family] == 'freebsd'
     pass    0
     action  :enable
   end
-  # FIXME: missing /compat?
-  # tmpfs /compat/linux/dev/shm tmpfs rw,mode=1777,size=1g 0 0
-  # mount "/compat/linux/dev/shm" do
-  #   device  "tmpfs"
-  #   fstype  "procfs"
-  #   options "rw,mode=1777,size=1g"
-  #   dump    0
-  #   pass    0
-  #   action  :enable
-  # end
-  # # linprocfs /compat/linux/proc linprocfs rw 0 0
-  # mount "/compat/linux/proc" do
-  #   device  "linprocfs"
-  #   fstype  "linprocfs"
-  #   options "rw"
-  #   dump    0
-  #   pass    0
-  #   action  :enable
-  # end
-  # # linsysfs /compat/linux/sys linsysfs rw 0 0
-  # mount "/compat/linux/sys" do
-  #   device  "linsysfs"
-  #   fstype  "linsysfs"
-  #   options "rw"
-  #   dump    0
-  #   pass    0
-  #   action  :enable
-  # end
-end
-  
-# sysrc "kld_list=\"/boot/modules/nvidia.ko /boot/modules/nvidia-modeset.ko\""
-sysrc "kld_list" do
-  value "nvidia"
-end
-sysrc "devfs_system_ruleset" do
-  value "system"
-end
-sysrc "cupsd_enable" do
-  value "YES"
-end
-sysrc "linux_enable" do
-  value "YES"
 end
 
 # f=/etc/sysctl.conf
 #   vfs.usermount=1
 #   compat.linux.osrelease=3.10.0
 #   kern.ipc.shm_allow_removed=1
-  
 
-# f=/boot/loader.conf
-#   kern.vty=vt
-
-# f=/etc/devfs.rules
-#   [system=10]
-#   add path 'usb/*' mode 0664 group operator
-#   add path 'cd*' mode 0664 group operator
-#   add path 'da*' mode 0664 group operator
-#   add path 'video*' mode 0664 group operator
-
-
-# f=/etc/devfs.conf
-#   own     /dev/pci        root:operator
-#   perm    /dev/pci        0664
-#   own     /dev/dri/card0  root:operator
-#   perm    /dev/dri/card0  0664
-#   own	/dev/pass0	root:operator
-#   perm	/dev/pass0	0664
-#   own	/dev/xpt0	root:operator
-#   perm	/dev/xpt0	0664
-#   link /compat/linux/dev/shm shm
+# devfs {
+  # sysrc "devfs_system_ruleset" do
+  #   value "system"
+  # end
+  # f=/etc/devfs.rules
+  #   [system=10]
+  #   add path 'usb/*' mode 0664 group operator
+  #   add path 'cd*' mode 0664 group operator
+  #   add path 'da*' mode 0664 group operator
+  #   add path 'video*' mode 0664 group operator
+  # f=/etc/devfs.conf
+  #   own     /dev/pci        root:operator
+  #   perm    /dev/pci        0664
+  #   own     /dev/dri/card0  root:operator
+  #   perm    /dev/dri/card0  0664
+  #   own	/dev/pass0	root:operator
+  #   perm	/dev/pass0	0664
+  #   own	/dev/xpt0	root:operator
+  #   perm	/dev/xpt0	0664
+  #   link /compat/linux/dev/shm shm
 # }
 
 # system de fenestrage {
@@ -118,8 +75,8 @@ end
   when 'freebsd'
     package "xorg"
     package "dbus"
-    sysrc "dbus_enable" do
-      value 'YES'
+    service "dbus" do
+      action :enable
     end
   when 'macos'
     # quartz included
@@ -136,8 +93,8 @@ end
     # gdm3
   when 'freebsd'
       package "sddm"
-      sysrc "sddm_enable" do
-        value "YES"
+      service "sddm" do
+        action :enable
       end
   when 'macos'
     # quartz included
@@ -156,6 +113,11 @@ end
     # package "xfce4" # born:1997
     # package "lxde"  # born:2006
     # package "lxqt"  # born:2013
+
+    # KDE5 depends on CUPS
+    service "cupsd" do
+      action :enable
+    end
   when 'macos'
     # quartz included
     # package "hammerspoon" # window manip ui
@@ -256,8 +218,10 @@ end
 
 # fs usage viz {
   case node[:platform_family]
-  when 'rhel', 'debian', 'freebsd'
+  when 'rhel', 'debian'
       package "baobab"
+  when 'freebsd'
+      package "filelight"
   when 'macos'
     # package "daisydisk"
   else
@@ -406,6 +370,10 @@ end
 # mas  "Timer", id: 799574890
 
 # emulators/linux_base-c7
+service 'linux' do
+  action :enable
+end
+
 # emulators/wine
 # emulators/wine-gecko
 # emulators/wine-mono
