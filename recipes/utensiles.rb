@@ -9,7 +9,10 @@
 
 # password store {
   # package "pass"         # password store, cli
-    package "1password-client2"
+
+  # 1password-cli
+  include_recipe 'travalio::1password'
+
   # package "linux-bitwarden-cli"
 
   # package "oath-toolkit"         # otp generator

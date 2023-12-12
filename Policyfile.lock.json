@@ -1,5 +1,5 @@
 {
-  "revision_id": "5c8e03697148763c7dcae777a09e8e7b9a90f8b802099d13d42be8b588024e54",
+  "revision_id": "caf21d4001b6c0dae4b5501e25c2119d1850749ddbc8f2d5ab79000a63141194",
   "name": "travalio",
   "run_list": [
     "recipe[travalio::default]"
@@ -10,13 +10,13 @@
   "cookbook_locks": {
     "base": {
       "version": "0.6.6",
-      "identifier": "ea826261b8864d71139b330a43040341faf50d1d",
-      "dotted_decimal_identifier": "66008503608182349.31828229665473284.3581918121245",
-      "cache_key": "base-487752ca484ec23857c1ad40fcadefc45453a4a7",
+      "identifier": "4402955822986d3bc1c2974cf8037e4700ea0313",
+      "dotted_decimal_identifier": "19143138868369517.16820065132148739.138843423114003",
+      "cache_key": "base-7a6d02fddb9e4d0f8983265294adeb640b09470d",
       "origin": "https://github.com/josephholsten/role-base.git",
       "source_options": {
         "git": "https://github.com/josephholsten/role-base.git",
-        "revision": "487752ca484ec23857c1ad40fcadefc45453a4a7"
+        "revision": "7a6d02fddb9e4d0f8983265294adeb640b09470d"
       }
     },
     "chef_client_updater": {
@@ -97,19 +97,20 @@
       }
     },
     "travalio": {
-      "version": "0.2.3",
-      "identifier": "fc4dd6abb3595ae8dd11119dae9f73c0c59c8ed7",
-      "dotted_decimal_identifier": "71017278530083162.65545259976601247.127271786286807",
+      "version": "0.2.4",
+      "identifier": "ef274f822aae1dcc687b6ce98ebe31657bc08638",
+      "dotted_decimal_identifier": "67315741873581597.57535774566485694.54311937672760",
       "source": ".",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": "ssh://git@github.com/josephholsten/rolo-travalio.git",
-        "revision": "1859472206827baa8d4a3632efd54f26d662d4bc",
+        "remote": "https://github.com/josephholsten/rolo-travalio",
+        "revision": "62676882a1e681aa01ca2815c26634089560a5ec",
         "working_tree_clean": false,
-        "published": false,
+        "published": true,
         "synchronized_remote_branches": [
-
+          "origin/HEAD -> origin/main",
+          "origin/main"
         ]
       },
       "source_options": {
@@ -235,7 +236,7 @@
       "rsyslog (9.2.16)": [
 
       ],
-      "travalio (0.2.3)": [
+      "travalio (0.2.4)": [
         [
           "base",
           ">= 0.0.0"
