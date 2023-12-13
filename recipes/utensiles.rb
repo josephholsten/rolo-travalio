@@ -131,8 +131,23 @@
   # package "darcs"
   # package "mercurial"
     package 'git'        # osx ships with 2.3.2, which is ancient
+  # package 'pijul'
   # package "hub"        # github cli   # FIXME: github.com/github/hub
-    package "ghq"        # rcs store
+    package "ghq" do     # rcs store
+      case node[:platform]
+      when 'redhat', 'centos', 'oracle'
+        # Not supported
+        action :nothing
+      when 'debian'
+        # Not supported
+        action :nothing
+      when 'freebsd'
+        package_name 'ghq'
+      else
+        # Not supported
+        action :nothing
+      end
+    end
   # package "hig"        # multi-rcs ui # FIXME: github.com/josephholsten/hig
 # }
 
