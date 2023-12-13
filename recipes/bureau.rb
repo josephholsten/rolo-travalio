@@ -233,10 +233,12 @@ end
 
 # Documentation Viewer {
   case node[:platform_family]
-  when 'rhel', 'debian', 'freebsd'
-    package "zeal"         
+  when 'rhel'
+    # Not supported
+  when 'debian', 'freebsd'
+    package 'zeal'
   when 'macos'
-    package "dash"         
+    package 'dash'
   else
     # Not supported
   end
@@ -319,14 +321,23 @@ end
 # browser {
   # netscape                 # born:1999-10-13
   # package "firefox"        # born:2004-11-09
-    package "firefox-esr"
+    package 'firefox-esr'
 
   # package "google-chrome"  # fallback
   # package "tor-browser"    # anonymous browser, tor + web browser
-  # package "epiphany" # aka GNOME Web, webkit2gtk-4
-    package "falkon" # qt6 WebEngine / blink
   # package "ungoogled-chromium"
   # package "linux-opera"
+
+  case node[:platform_family]
+  when 'rhel', 'debian'
+    # package "epiphany" # aka GNOME Web, webkit2gtk-4
+  when 'debian', 'freebsd'
+    package 'falkon' # qt6 WebEngine / blink
+  when 'macos'
+    # safari included
+  else
+    # Not supported
+  end
 # }
  
 # chat {
@@ -371,9 +382,17 @@ end
 # package "karabiner-elements" # key bindings
 # mas  "Timer", id: 799574890
 
-# emulators/linux_base-c7
-service 'linux' do
-  action :enable
+# Linux emulation
+case node[:platform_family]
+when 'rhel', 'debian'
+  # Not needed
+when 'freebsd'
+  # emulators/linux_base-c7
+  service 'linux' do
+    action :enable
+  end
+else
+  # Not supported
 end
 
 # emulators/wine
