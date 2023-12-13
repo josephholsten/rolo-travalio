@@ -320,8 +320,16 @@ end
 
 # browser {
   # netscape                 # born:1999-10-13
-  # package "firefox"        # born:2004-11-09
+
+  # package 'firefox'        # born:2004-11-09
+  case node[:platform_family]
+  when 'rhel'
+    package 'firefox'
+  when 'debian', 'freebsd', 'macos'
     package 'firefox-esr'
+  else
+    # Not supported
+  end
 
   # package "google-chrome"  # fallback
   # package "tor-browser"    # anonymous browser, tor + web browser
