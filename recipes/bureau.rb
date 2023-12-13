@@ -128,8 +128,10 @@ end
 
 # clipboard {
   case node[:platform_family]
-  when 'rhel', 'debian', 'freebsd'
-      package "xsel-conrad" # xsel
+  when 'rhel', 'debian'
+      package 'xsel'
+  when 'freebsd'
+      package 'xsel-conrad' # xsel
   when 'macos'
     # pbcopy included
   else
